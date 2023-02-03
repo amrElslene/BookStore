@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BookStore.Models.domins.cartbooks>
+@{
+    Layout = null;
+    int total = 0;
+}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+    <link href="~/css/styless.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/cartstyle.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <meta name="robots" content="noindex,follow" />
+  </head>
+  <body>
+    <div class="shopping-cart">
+      <!-- Title -->
+      <div class="title">
+        Shopping Bag
+      </div>
+
+
+        @{
+            foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="buttons">
+                        <span class="delete-btn"><a></a></span>
+                    </div>
+
+                    <div class="image">
+                        <img src="~/imgs/bookimgs/@item.imgname" width="80px" height="80px" alt="123" />
+                    </div>
+
+                    <div class="description">
+                        <span>@item.Title</span>
+                        <span>@item.Author</span>
+                        <span>@item.TotalPages</span>
+                    </div>
+
+
+                    <div class="total-price">$@item.price</div>
+                    <span hidden >$@item.price@(total = total + @item.price)</span>
+                </div>
+            }
+
+        }
+        </div>
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><p class="btn btn-dark mt-auto" >Total = @total</p></div>
+        </div>
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/home/donecart">Done</a></div>
+        </div>
+     
+
+  </body>
+</html>

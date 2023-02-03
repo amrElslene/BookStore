@@ -1,0 +1,131 @@
+﻿@model BookStore.Models.domins.User
+
+@{
+
+    ViewData["Title"] = "Create Account";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&family=Style+Script&display=swap&family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/createAccount.css">
+
+    <title>Create Account</title>
+
+    <style>
+        .login__link {
+            margin-top: 10px;
+            margin-bottom: -20px;
+        }
+        
+        .login__link a {
+            text-decoration: none;
+            color: gray;
+            font-family: 'Baloo 2', cursive;
+            font-size: 80%;
+            padding: 0px 8px;
+        }
+        
+        .login__link a:hover {
+            color: black;
+            background-color: rgb(190, 187, 187);
+            padding: 0px 8px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+   
+    <section class="section" id="background__area">
+        <div class="main__back__div">
+            <div class="div__one"></div>
+            <div class="div__two"></div>
+        </div>
+    </section>
+
+    <section class="section" id="create__page">
+        <div class="main__create__area">
+            <div class="div__one__account">
+                <div class="signup__content__background">
+                    <div class="signup-heading">
+                        <h2>Create an Account</h2>
+                    </div>
+                    <form asp-action="creatingaccount" method="post">
+                        <div class="form-group">
+                            <label asp-for="Name">Name *</label><br/>
+                            <input type="text" class="form-control" asp-for="Name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email">Email *</label><br/>
+                            <input type="text" class="form-control" asp-for="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Username">Username *</label><br />
+                            <input type="text" class="form-control" asp-for="Username" />
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Password"> Password *</label><br />
+                            <input type="password" class="form-control" asp-for="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="cPassword">Re=Password *</label><br />
+                            <input type="password" class="form-control" asp-for="cPassword" />
+                            <span asp-validation-for="cPassword" class="text-danger"></span>
+                        </div>
+
+                        
+
+                        @if (TempData["msg"] != null)
+                        {
+                            <div class="form-group">
+                                @TempData["msg"]
+                            </div>
+                        }
+                        <div class="form-group pt-3">
+                            <button type="submit" class="signup__confirm"><i class="bi bi-save"></i> Sign Up</button>
+                            <button class="signup__cancel"><a href="/">Cancel</a></button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="div__two__account">
+                <div class="section__two__content">
+                    <h2>
+                        Welcome to Our Book Store
+                    </h2>
+                    <p>We provide our customers with a wide variety of Books from different categories.<br><br> Have a look into our <a href="/"> Books</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

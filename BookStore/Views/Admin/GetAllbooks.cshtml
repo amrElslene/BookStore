@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BookStore.Models.domins.Book>
+@{
+    Layout = "_Layout1";
+}
+
+<div class="container pt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-dark" href="/Admin/Add">+ Add more</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Books</h3>
+
+            <table class="table table-stripped table-bordered table-dark">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Genre</th>
+                        <th>Isbn</th>
+                        <th>Total Pages</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Price</th>
+                        <th>img</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.Genre</td>
+                            <td>@item.Isbn</td>
+                            <td>@item.TotalPages</td>
+                            <td>@item.Author</td>
+                            <td>@item.Publisher</td>
+                            <td>@(item.price) $</td>
+                            <td><img src="/imgs/bookimgs/@(item.imgname)" width="50px" height="50px"/></td>
+                            <td>
+                                <a class="btn btn-success" href="/Admin/Update?id=@item.Id"><i class="bi bi-pen"></i></a> |
+                                <a class="btn btn-danger" onclick="return window.confirm('Are you sure?')" href="/Admin/Deletebook?id=@item.Id"><i class="bi bi-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
